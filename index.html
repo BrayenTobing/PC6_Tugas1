@@ -36,7 +36,7 @@
 			<button id='negative'>Negative Image</button>
 			<button id='grayscale'>Grayscale Image</button>
 			<br>
-			<button id='bara'>Tugas</button>
+			<button id='ss'>Tugas</button>
 		</div>
 	</div>
 	<div class="row">
@@ -52,6 +52,12 @@
 			<button id='mirror2'>Kanan</button>
 			<button id='mirror3'>Atas</button>
 			<button id='mirror4'>Bawah</button>
+			<br>
+			Mirror<br>
+			<button id='mirror5'>KiriAtas</button>
+			<button id='mirror6'>KananAtas</button>
+			<button id='mirror7'>KiriBawah</button>
+			<button id='mirror8'>KananBawah</button>
 		</div>
 		<div class="column">
 			<h2>Modul 4</h2>
@@ -225,7 +231,7 @@ tes[i][3] = tesbackup[i][3]
 obj.array2canvas(tes)
 })
 //Tugas
-document.getElementById('bara').addEventListener('click',function(){
+document.getElementById('ss').addEventListener('click',function(){
 //copy array to array without reference
 tesbackup = new Array()
 for(var c=0;c<tes.length;c++){
@@ -452,12 +458,12 @@ temp.push(tes[c][d])
 tesbackup.push(temp)
 }
 //end of copy
-var wnow=obj.width
+var hnow=obj.height
 for (var i=0;i<tesbackup.length;i++){
 x=obj.i2x(i)
 y=obj.i2y(i)
-if(y>=wnow/2){
-posnow = obj.xy2i(x,wnow-y-1)
+if(y>=hnow/2){
+posnow = obj.xy2i(x,hnow-y-1)
 tes[i][0]=tesbackup[posnow][0]
 tes[i][1]=tesbackup[posnow][1]
 tes[i][2]=tesbackup[posnow][2]
@@ -478,17 +484,150 @@ temp.push(tes[c][d])
 tesbackup.push(temp)
 }
 //end of copy
-var wnow=obj.width
+var hnow=obj.height
 for (var i=0;i<tesbackup.length;i++){
 x=obj.i2x(i)
 y=obj.i2y(i)
-if(y<wnow/2){
-posnow = obj.xy2i(x,wnow-y-1)
+if(y<hnow/2){
+posnow = obj.xy2i(x,hnow-y-1)
 tes[i][0]=tesbackup[posnow][0]
 tes[i][1]=tesbackup[posnow][1]
 tes[i][2]=tesbackup[posnow][2]
 tes[i][3]=tesbackup[posnow][3]
 }
+}
+obj.array2canvas(tes)
+})
+
+//<!-- EFEK MIRRORING PEREMPAT-->
+document.getElementById('mirror5').addEventListener('click',function(){
+//copy array to array without reference
+tesbackup = new Array()
+for(var c=0;c<tes.length;c++){
+temp = new Array()
+for(var d=0;d<4;d++){
+temp.push(tes[c][d])
+}
+tesbackup.push(temp)
+}
+//end of copy
+var wnow=obj.width
+var hnow=obj.height
+for (var i=0;i<tesbackup.length;i++){
+x=obj.i2x(i)
+y=obj.i2y(i)
+posnow=i
+if(y<hnow/2){
+	if(x<wnow/2){posnow = obj.xy2i(x,y)}
+	else{ posnow = obj.xy2i(wnow-x-1,y)}
+}else{
+	if(x<wnow/2){ posnow = obj.xy2i(x,hnow-y-1)}
+	else{posnow = obj.xy2i(wnow-x-1,hnow-y-1)}
+}
+tes[i][0]=tesbackup[posnow][0]
+tes[i][1]=tesbackup[posnow][1]
+tes[i][2]=tesbackup[posnow][2]
+tes[i][3]=tesbackup[posnow][3]
+}
+obj.array2canvas(tes)
+})
+
+
+document.getElementById('mirror6').addEventListener('click',function(){
+
+//copy array to array without reference
+tesbackup = new Array()
+for(var c=0;c<tes.length;c++){
+temp = new Array()
+for(var d=0;d<4;d++){
+temp.push(tes[c][d])
+}
+tesbackup.push(temp)
+}
+//end of copy
+var wnow=obj.width
+var hnow=obj.height
+for (var i=0;i<tesbackup.length;i++){
+x=obj.i2x(i)
+y=obj.i2y(i)
+posnow=i
+if(y<hnow/2){
+	if(x<wnow/2){posnow = obj.xy2i(wnow-x-1,y)}
+	else{ posnow = obj.xy2i(x,y)}
+}else{
+	if(x<wnow/2){ posnow = obj.xy2i (wnow-x-1,hnow-y-1)}
+	else{posnow = obj.xy2i (x,hnow-y-1)}
+}
+tes[i][0]=tesbackup[posnow][0]
+tes[i][1]=tesbackup[posnow][1]
+tes[i][2]=tesbackup[posnow][2]
+tes[i][3]=tesbackup[posnow][3]
+}
+obj.array2canvas(tes)
+})
+
+document.getElementById('mirror7').addEventListener('click',function(){
+//copy array to array without reference
+tesbackup = new Array()
+for(var c=0;c<tes.length;c++){
+temp = new Array()
+for(var d=0;d<4;d++){
+temp.push(tes[c][d])
+}
+tesbackup.push(temp)
+}
+//end of copy
+var wnow=obj.width
+var hnow=obj.height
+for (var i=0;i<tesbackup.length;i++){
+x=obj.i2x(i)
+y=obj.i2y(i)
+posnow=i
+if(y<hnow/2){
+	if(x<wnow/2){ posnow = obj.xy2i(x,hnow-y-1)}
+	else{ posnow = obj.xy2i(wnow-x-1,hnow-y-1) }
+}else{
+	if(x<wnow/2){posnow = obj.xy2i(x,y) }
+	else{posnow = obj.xy2i(wnow-x-1,y)}
+}
+tes[i][0]=tesbackup[posnow][0]
+tes[i][1]=tesbackup[posnow][1]
+tes[i][2]=tesbackup[posnow][2]
+tes[i][3]=tesbackup[posnow][3]
+}
+obj.array2canvas(tes)
+})
+
+
+document.getElementById('mirror8').addEventListener('click',function(){
+
+//copy array to array without reference
+tesbackup = new Array()
+for(var c=0;c<tes.length;c++){
+temp = new Array()
+for(var d=0;d<4;d++){
+temp.push(tes[c][d])
+}
+tesbackup.push(temp)
+}
+//end of copy
+var wnow=obj.width
+var hnow=obj.height
+for (var i=0;i<tesbackup.length;i++){
+x=obj.i2x(i)
+y=obj.i2y(i)
+posnow=i
+if(y<hnow/2){
+	if(x<wnow/2){posnow = obj.xy2i (wnow-x-1,hnow-y-1)}
+	else{posnow = obj.xy2i (x,hnow-y-1)}
+}else{
+	if(x<wnow/2){posnow = obj.xy2i(wnow-x-1,y)}
+	else{posnow = obj.xy2i(x,y)}
+}
+tes[i][0]=tesbackup[posnow][0]
+tes[i][1]=tesbackup[posnow][1]
+tes[i][2]=tesbackup[posnow][2]
+tes[i][3]=tesbackup[posnow][3]
 }
 obj.array2canvas(tes)
 })
